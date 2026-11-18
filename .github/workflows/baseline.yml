@@ -1,0 +1,8 @@
+name: Literal Bash baseline
+on: push
+jobs:
+  baseline:
+    runs-on: ubuntu-latest
+    steps:
+      - run: printf 'BASELINE_OK\n'
+        shell: bash

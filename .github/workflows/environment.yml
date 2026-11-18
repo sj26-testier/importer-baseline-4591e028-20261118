@@ -1,0 +1,17 @@
+name: Literal environment precedence
+on: push
+env:
+  WORKFLOW_ONLY: workflow-11
+  JOB_OVERRIDE: workflow-23
+  STEP_OVERRIDE: workflow-37
+jobs:
+  environment:
+    runs-on: ubuntu-latest
+    env:
+      JOB_OVERRIDE: job-41
+      STEP_OVERRIDE: job-53
+    steps:
+      - run: test "$WORKFLOW_ONLY" = workflow-11 && test "$JOB_OVERRIDE" = job-41 && test "$STEP_OVERRIDE" = step-67 && printf 'ENVIRONMENT_OK\n'
+        shell: bash
+        env:
+          STEP_OVERRIDE: step-67

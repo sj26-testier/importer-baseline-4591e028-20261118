@@ -1,0 +1,8 @@
+name: Intentional Bash failure
+on: push
+jobs:
+  failure:
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 7
+        shell: bash

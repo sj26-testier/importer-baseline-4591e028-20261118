@@ -1,0 +1,10 @@
+name: Ordered literal Bash steps
+on: push
+jobs:
+  ordered:
+    runs-on: ubuntu-latest
+    steps:
+      - run: printf 'producer-73\n' > handoff.txt
+        shell: bash
+      - run: test "$(cat handoff.txt)" = producer-73 && printf 'ORDERED_OK\n'
+        shell: bash
